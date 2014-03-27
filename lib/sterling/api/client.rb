@@ -2,7 +2,7 @@ module Sterling
   module API
     class Client
       
-      attr_reader :base_url
+      attr_reader :base_url, :conn, :config
 
       def initialize
         @config = self.verify_config(Sterling.configuration)
@@ -12,22 +12,10 @@ module Sterling
 
       def products(user_location, query)
         params = { user_location: user_location, keywords: query }
-        self.get('products', params)
+        Product.search(self, params)
       end
 
       protected 
-
-      def get(url, params)
-        response = @conn.get do |req|
-          req.url url
-          req.params['apikey'] = @config.api_key
-          req.params['userlocation'] = params[:user_location]
-          req.params['requestorid'] = @config.retailer_id
-          req.params['keywords'] = params[:keywords]
-        end
-
-        Crack::JSON.parse(response.body)
-      end
 
       def host
         if self.valid_api_host?(@config.api_host)
