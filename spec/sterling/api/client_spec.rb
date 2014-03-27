@@ -17,6 +17,23 @@ describe Sterling::API::Client do
     end
   end
 
+  context '.products' do
+    before do
+      Sterling.configure do |config|
+        config.api_version = '2.1'
+        config.api_key = 'dVrbDdN_3tqdUot_sgLn6tY1p4HIp0kK'
+        config.retailer_id = 'test'
+        config.api_host = 'api'
+      end
+      
+      @api = Sterling::API::Client.new
+    end
+
+    it 'queries posts properly' do
+      expect(@api.products('75033', 'Baby Bottle')).to_not be_nil
+    end
+  end
+
   context 'invalid config' do
     it 'raises an error if the api version is nil' do
       Sterling.configure do |config|
