@@ -25,4 +25,5 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'activesupport', '~> 3.2.17'
   spec.add_dependency 'faraday', '0.9.0'
+  spec.add_dependency 'crack', '~> 0.4.1'
 end
