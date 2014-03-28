@@ -1,8 +1,7 @@
 module Sterling
   module API
     class Product
-      attr_reader :id, :externalproductid, :model, 
-
+      attr_reader :product, :distance, :location, :inventory, :price, :images
 
       def self.search(client, params)
         return [] unless  params[:keywords] && params[:user_location]
