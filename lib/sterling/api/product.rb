@@ -5,8 +5,6 @@ module Sterling
 
       def self.search(client, params)
         return [] unless  params[:keywords] && params[:user_location]
-        client = client
-
 
         response = client.conn.get do |req|
           req.url 'products'
