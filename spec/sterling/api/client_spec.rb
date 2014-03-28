@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'vcr_helper'
 
 describe Sterling::API::Client do
 
@@ -30,7 +31,19 @@ describe Sterling::API::Client do
     end
 
     it 'queries posts properly' do
-      expect(@api.products('75033', 'Baby Bottle')).to_not be_nil
+      VCR.use_cassette('products') do
+        products = @api.products('75033', 'Baby Bottle')
+        expect(products.class).to eql(Array)
+        expect(products.first.class).to eql(Sterling::API::Product)
+        product = products.first
+
+        expect(product.product).to_not be_nil
+        expect(product.location).to_not be_nil
+        expect(product.distance).to_not be_nil
+        expect(product.price).to_not be_nil
+        expect(product.currency).to_not be_nil
+        expect(product.inventory).to_not be_nil
+      end
     end
   end
 

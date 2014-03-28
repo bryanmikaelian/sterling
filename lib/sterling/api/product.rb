@@ -1,7 +1,7 @@
 module Sterling
   module API
     class Product
-      attr_reader :product, :distance, :location, :inventory, :price, :images
+      attr_reader :product, :distance, :location, :inventory, :price, :currency, :inventory, :lastUpdated
 
       def self.search(client, params)
         return [] unless  params[:keywords] && params[:user_location]
@@ -22,8 +22,6 @@ module Sterling
           products = parsed['RetailigenceSearchResult']['results'].map do |product|
             Product.new(product['SearchResult'])
           end
-
-          products
         else
           []
         end
