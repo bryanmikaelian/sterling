@@ -1,4 +1,4 @@
-# Sterling
+# Sterling - A Retailigence API Wrapper
 
 ![Sterling Cooper](http://www.campaignbrief.com/nz/Sterling-Cooper-logo.png)
 
