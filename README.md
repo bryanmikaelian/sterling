@@ -4,6 +4,8 @@
 
 Sterling is a simple wrapper for the [Retailigence API](http://www.retailigence.com/). The name was inspired from Sterling Cooper, the fictional ad agency from Mad Men.
 
+[![Build Status](https://travis-ci.org/puhsh/sterling.svg?branch=master)](https://travis-ci.org/puhsh/sterling)
+
 ### Installation
 
 ```
