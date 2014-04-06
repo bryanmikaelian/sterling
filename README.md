@@ -20,8 +20,7 @@ Sterling is designed to be dropped into a Rails app with little effort. Simply c
 ```ruby
 Sterling.configure do |config|
   config.api_version = '...'
-  config.api_key = 'your api key'
-  config.retailer_id = 'your requestor id'
+  config.api_key = 'your api key''
   config.api_host = 'api or apitest'
 end
 ```
@@ -34,7 +33,7 @@ Once configured, you can create a new client object. This object is used to inte
 client = Sterling::API::Client.new
 
 # Return an array of product objects for the location 90210 that match the keyword Diamonds
-products = client.products("90201", "Diamonds")
+products = client.products("90201", "Diamonds", "your_requestor_id")
 
 # Get the product names
 products.each do |search_result|
