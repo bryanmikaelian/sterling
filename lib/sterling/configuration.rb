@@ -10,12 +10,11 @@ module Sterling
   end
 
   class Configuration
-    attr_accessor :api_version, :api_key, :retailer_id, :api_host
+    attr_accessor :api_version, :api_key, :api_host
 
     def initialize
       @api_version = '2.1'
       @api_key = nil
-      @retailer_id = nil
       @api_host = nil
     end
   end

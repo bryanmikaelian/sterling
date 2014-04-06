@@ -8,7 +8,6 @@ describe Sterling::API::Client do
       Sterling.configure do |config|
         config.api_version = '2.1'
         config.api_key = '1234'
-        config.retailer_id = 'test'
         config.api_host = 'api'
       end
     end
@@ -23,7 +22,6 @@ describe Sterling::API::Client do
       Sterling.configure do |config|
         config.api_version = '2.1'
         config.api_key = 'dVrbDdN_3tqdUot_sgLn6tY1p4HIp0kK'
-        config.retailer_id = 'test'
         config.api_host = 'api'
       end
       
@@ -32,7 +30,7 @@ describe Sterling::API::Client do
 
     it 'queries posts properly' do
       VCR.use_cassette('products') do
-        products = @api.products('75033', 'Baby Bottle')
+        products = @api.products('75033', 'Baby Bottle', 'test')
         expect(products.class).to eql(Array)
         expect(products.first.class).to eql(Sterling::API::Product)
         product = products.first
@@ -52,7 +50,6 @@ describe Sterling::API::Client do
       Sterling.configure do |config|
         config.api_version = nil
         config.api_key = '1234'
-        config.retailer_id = 'test'
         config.api_host = 'api'
       end
 
@@ -63,18 +60,6 @@ describe Sterling::API::Client do
       Sterling.configure do |config|
         config.api_version = '4.0'
         config.api_key = '1234'
-        config.retailer_id = 'test'
-        config.api_host = 'api'
-      end
-
-      expect{Sterling::API::Client.new}.to raise_error
-    end
-
-    it 'raises an error if the retailer is nil' do
-      Sterling.configure do |config|
-        config.api_version = '2.1'
-        config.api_key = '1234'
-        config.retailer_id = nil
         config.api_host = 'api'
       end
 
@@ -85,7 +70,6 @@ describe Sterling::API::Client do
       Sterling.configure do |config|
         config.api_version = '2.1'
         config.api_key = '1234'
-        config.retailer_id = 'test'
         config.api_host = nil
       end
 
@@ -95,7 +79,6 @@ describe Sterling::API::Client do
       Sterling.configure do |config|
         config.api_version = '2.1'
         config.api_key = '1234'
-        config.retailer_id = 'test'
         config.api_host = 'api_broken'
       end
 

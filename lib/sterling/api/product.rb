@@ -4,13 +4,13 @@ module Sterling
       attr_reader :product, :distance, :location, :inventory, :price, :currency, :inventory, :lastUpdated
 
       def self.search(client, params)
-        return [] unless  params[:keywords] && params[:user_location]
+        return [] unless  params[:keywords] && params[:user_location] && params[:requestor_id]
 
         response = client.conn.get do |req|
           req.url 'products'
           req.params['apikey'] = client.config.api_key
           req.params['userlocation'] = params[:user_location]
-          req.params['requestorid'] = client.config.retailer_id
+          req.params['requestorid'] = params[:requestor_id]
           req.params['keywords'] = params[:keywords]
         end
 

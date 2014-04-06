@@ -17,11 +17,4 @@ describe Sterling do
 
     expect(Sterling.configuration.api_key).to eql('abcd')
   end
-
-  it 'can set the Retailer ID' do
-    Sterling.configure do |config|
-      config.retailer_id = '12345'
-    end
-    expect(Sterling.configuration.retailer_id).to eql('12345')
-  end
 end

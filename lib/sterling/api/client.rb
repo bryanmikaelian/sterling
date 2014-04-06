@@ -10,8 +10,8 @@ module Sterling
         @conn = Faraday.new(url: "http://#{@base_url}")
       end
 
-      def products(user_location, query)
-        params = { user_location: user_location, keywords: query }
+      def products(user_location, query, requestor_id)
+        params = { user_location: user_location, keywords: query, requestor_id: requestor_id }
         Product.search(self, params)
       end
 
@@ -46,7 +46,7 @@ module Sterling
       end
 
       def verify_config(config)
-        if config.api_version.nil? || config.api_key.nil? || config.api_host.nil? || config.retailer_id.nil?
+        if config.api_version.nil? || config.api_key.nil? || config.api_host.nil?
           raise Sterling::Error::MissingAPIConfiguration.new('Invalid configuration')
         else
           config
