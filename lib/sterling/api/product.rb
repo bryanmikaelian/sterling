@@ -16,7 +16,7 @@ module Sterling
 
         parsed = JSON.parse(response.body)
 
-        if parsed['RetailigenceSearchResult']['results'] && parsed['RetailigenceSearchResult']['results'].size > 0
+        if !parsed['RetailigenceSearchResult'].nil? && parsed['RetailigenceSearchResult']['results'] && parsed['RetailigenceSearchResult']['results'].size > 0
           products = parsed['RetailigenceSearchResult']['results'].map do |product|
             Product.new(product['SearchResult'])
           end
