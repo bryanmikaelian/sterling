@@ -1,4 +1,4 @@
-Copyright (c) 2014 Puhsh, Inc.
+Copyright (c) 2015 Puhsh, Inc.
 
 MIT License
 
